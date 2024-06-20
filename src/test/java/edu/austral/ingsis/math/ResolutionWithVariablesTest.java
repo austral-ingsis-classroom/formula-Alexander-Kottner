@@ -1,5 +1,7 @@
 package edu.austral.ingsis.math;
 
+import edu.austral.ingsis.math.Formula.*;
+import edu.austral.ingsis.math.Formula.Number;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -10,7 +12,7 @@ public class ResolutionWithVariablesTest {
   /** Case 1 + x where x = 3 */
   @Test
   public void shouldResolveFunction1() {
-    final Double result = 4d;
+    final Double result = new Addition(new Number(1), new Variable("x", 3)).resolve();
 
     assertThat(result, equalTo(4d));
   }
@@ -18,7 +20,7 @@ public class ResolutionWithVariablesTest {
   /** Case 12 / div where div = 4 */
   @Test
   public void shouldResolveFunction2() {
-    final Double result = 3d;
+    final Double result = new Division(new Number(12), new Variable("div", 4)).resolve();
 
     assertThat(result, equalTo(3d));
   }
@@ -26,7 +28,7 @@ public class ResolutionWithVariablesTest {
   /** Case (9 / x) * y where x = 3 and y = 4 */
   @Test
   public void shouldResolveFunction3() {
-    final Double result = 12d;
+    final Double result = new Multiplication(new Division(new Number(9), new Variable("x", 3)), new Variable("y", 4)).resolve();
 
     assertThat(result, equalTo(12d));
   }
@@ -34,7 +36,7 @@ public class ResolutionWithVariablesTest {
   /** Case (27 / a) ^ b where a = 9 and b = 3 */
   @Test
   public void shouldResolveFunction4() {
-    final Double result = 27d;
+    final Double result = new Power(new Division(new Number(27), new Variable("a", 9)), new Variable("b", 3)).resolve();
 
     assertThat(result, equalTo(27d));
   }
@@ -42,7 +44,7 @@ public class ResolutionWithVariablesTest {
   /** Case z ^ (1/2) where z = 36 */
   @Test
   public void shouldResolveFunction5() {
-    final Double result = 6d;
+    final Double result = new SquareRoot(new Variable("z", 36)).resolve();
 
     assertThat(result, equalTo(6d));
   }
@@ -50,7 +52,7 @@ public class ResolutionWithVariablesTest {
   /** Case |value| - 8 where value = 8 */
   @Test
   public void shouldResolveFunction6() {
-    final Double result = 0d;
+    final Double result = new Subtraction(new AbsoluteValue(new Variable("value", 8)), new Number(8)).resolve();
 
     assertThat(result, equalTo(0d));
   }
@@ -58,7 +60,7 @@ public class ResolutionWithVariablesTest {
   /** Case |value| - 8 where value = 8 */
   @Test
   public void shouldResolveFunction7() {
-    final Double result = 0d;
+    final Double result = new Subtraction(new AbsoluteValue(new Variable("value", 8)), new Number(8)).resolve();
 
     assertThat(result, equalTo(0d));
   }
@@ -66,7 +68,7 @@ public class ResolutionWithVariablesTest {
   /** Case (5 - i) * 8 where i = 2 */
   @Test
   public void shouldResolveFunction8() {
-    final Double result = 24d;
+    final Double result = new Multiplication(new Subtraction(new Number(5), new Variable("i", 2)), new Number(8)).resolve();
 
     assertThat(result, equalTo(24d));
   }

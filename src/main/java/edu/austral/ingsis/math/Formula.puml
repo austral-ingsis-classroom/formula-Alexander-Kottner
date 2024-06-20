@@ -1,0 +1,46 @@
+@startuml
+interface Function {
+}
+
+class Number {
+}
+
+Function <|.. Number
+Function <|.. Variable
+Function <|.. Operation
+
+Log ..> Function :uses
+
+interface Operation {
+}
+
+class Addition {
+}
+class Subtraction {
+}
+class Multiplication {
+}
+class Division {
+}
+class Power {
+}
+class SquareRoot {
+}
+class AbsoluteValue {
+}
+
+Operation <|.. Addition
+Operation <|.. Subtraction
+Operation <|.. Multiplication
+Operation <|.. Division
+Operation <|.. Power
+Operation <|.. SquareRoot
+Operation <|.. AbsoluteValue
+
+interface Variable {
+}
+
+interface Log {
+}
+
+@enduml
