@@ -2,11 +2,11 @@ package edu.austral.ingsis.math.Formula;
 
 import java.util.List;
 
-public interface Function{
+public interface Function {
 
-    double resolve();
+  double resolve();
 
-    String print();
+  String print();
 
-    List<String> listVariables();
+  List<String> listVariables();
 }

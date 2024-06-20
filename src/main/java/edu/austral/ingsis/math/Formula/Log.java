@@ -2,6 +2,7 @@ package edu.austral.ingsis.math.Formula;
 
 public interface Log {
 
-    Void addExpression(Function log);
-    String showLoggedExpressions();
+  Void addExpression(Function log);
+
+  String showLoggedExpressions();
 }
